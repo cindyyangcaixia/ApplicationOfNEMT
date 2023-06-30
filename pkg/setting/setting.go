@@ -2,6 +2,7 @@ package setting
 
 import (
 	"log"
+	"time"
 
 	"github.com/go-ini/ini"
 )
@@ -21,8 +22,8 @@ var AppSetting = &App{}
 type Server struct {
 	RunMode      string
 	HttpPort     int
-	ReadTimeout  int
-	WriteTimeout int
+	ReadTimeout  time.Duration
+	WriteTimeout time.Duration
 }
 
 var ServerSetting = &Server{}

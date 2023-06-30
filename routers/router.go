@@ -13,7 +13,12 @@ func InitRouter() *gin.Engine {
 
 	apiv1 := r.Group("/api/v1")
 	{
-		apiv1.GET("/schools", v1.GetSchools)
+		apiv1.POST("/schools", v1.CreateSchools)
+		apiv1.GET("/health", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"message": "ok",
+			})
+		})
 	}
 
 	return r

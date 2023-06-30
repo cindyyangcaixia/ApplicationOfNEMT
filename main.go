@@ -23,11 +23,13 @@ func init() {
 func main() {
 	routersInit := routers.InitRouter()
 
+	var endPoint = fmt.Sprintf(":%d", setting.ServerSetting.HttpPort)
+
 	server := &http.Server{
-		Addr:           fmt.Sprintf(":%d", setting.ServerSetting.HttpPort),
-		Handler:        routersInit,
-		ReadTimeout:    time.Duration(setting.ServerSetting.ReadTimeout),
-		WriteTimeout:   time.Duration(setting.ServerSetting.WriteTimeout),
+		Addr:    endPoint,
+		Handler: routersInit,
+		// ReadTimeout:    setting.ServerSetting.ReadTimeout,
+		// WriteTimeout:   setting.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
 
@@ -36,6 +38,8 @@ func main() {
 			log.Fatalf("Listen: %s\n", err)
 		}
 	}()
+
+	log.Printf("[info] start http server listening %s", endPoint)
 
 	quit := make(chan os.Signal)
 	signal.Notify(quit, os.Interrupt)
