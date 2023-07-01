@@ -2,7 +2,9 @@ package models
 
 import (
 	"log"
+	"net/http"
 
+	"github.com/cindyyangcaixia/gin-example/pkg/app"
 	"github.com/cindyyangcaixia/gin-example/pkg/e"
 	"github.com/jinzhu/gorm"
 )
@@ -14,7 +16,7 @@ type School struct {
 	Model
 }
 
-func CreateSchool(name string, serialNo string) (*School, int) {
+func CreateSchool(name string, serialNo string) (*School, *app.ResponseMessage) {
 	school := School{
 		Name:     name,
 		SerialNo: serialNo,
@@ -23,25 +25,23 @@ func CreateSchool(name string, serialNo string) (*School, int) {
 
 	duplicateSchool, err := GetSchool(school.Name, school.SerialNo)
 	if err != nil {
-		return nil, e.ERROR
+		return nil, &app.ResponseMessage{Status: http.StatusInternalServerError, Code: e.ERROR, Message: err.Error()}
 	}
-
-	log.Println(duplicateSchool)
-	log.Println(duplicateSchool.ID)
 
 	// if IsExist(duplicateSchool) {
 	// 	return nil, e.SCHOOL_EXIST
 	// }
 
 	if duplicateSchool.ID > 0 {
-		return nil, e.SCHOOL_EXIST
+		return nil, &app.ResponseMessage{Status: http.StatusBadRequest, Code: e.SCHOOL_EXIST}
 	}
 
 	if err := db.Create(&school).Error; err != nil {
-		return nil, e.ERROR
+		return nil, &app.ResponseMessage{Status: http.StatusInternalServerError, Code: e.ERROR, Message: err.Error()}
 	}
 
-	return &school, e.SUCCESS
+	// why deleteAt is not null ? todo
+	return &school, nil
 }
 
 func GetSchool(name string, serialNo string) (*School, error) {
