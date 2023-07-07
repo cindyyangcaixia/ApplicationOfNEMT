@@ -6,6 +6,7 @@ require (
 	github.com/beego/beego/v2 v2.1.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-ini/ini v1.67.0
+	github.com/golang-jwt/jwt/v5 v5.0.0
 	github.com/jinzhu/gorm v1.9.16
 )
 

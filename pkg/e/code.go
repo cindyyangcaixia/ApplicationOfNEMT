@@ -28,7 +28,7 @@ func mergeMsgMaps(maps ...map[int]string) map[int]string {
 	return result
 }
 
-var MsgFlags = mergeMsgMaps(SchoolErrMsg, MajorErrMsg, errMsg)
+var MsgFlags = mergeMsgMaps(SchoolErrMsg, MajorErrMsg, errMsg, TokenMsgFlags)
 
 func GetMsg(code int) string {
 	msg, ok := MsgFlags[code]
