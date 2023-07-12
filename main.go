@@ -9,9 +9,11 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/cindyyangcaixia/gin-example/models"
-	"github.com/cindyyangcaixia/gin-example/pkg/setting"
-	"github.com/cindyyangcaixia/gin-example/routers"
+	_ "github.com/cindyyangcaixia/ApplicationOfNEMT/docs"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/routers"
+
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/models"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/setting"
 )
 
 func init() {
@@ -20,7 +22,22 @@ func init() {
 
 }
 
+//	@title			Application of National College Entrance Examination
+//	@version		1.0
+//	@description	This application is for college candidates to fill in their volunteers as a reference.
+
+//	@contact.name	API Support
+//	@contact.email	cindy.yang.caixia@gmail.com
+
+//	@host		localhost:8000
+//	@BasePath	/api/v1
+
+//	@securityDefinitions.basic	BasicAuth
+
+// @externalDocs.description	OpenAPI
+// @externalDocs.url			https://swagger.io/resources/open-api/
 func main() {
+
 	routersInit := routers.InitRouter()
 
 	var endPoint = fmt.Sprintf(":%d", setting.ServerSetting.HttpPort)
@@ -28,6 +45,7 @@ func main() {
 	server := &http.Server{
 		Addr:    endPoint,
 		Handler: routersInit,
+
 		// ReadTimeout:    setting.ServerSetting.ReadTimeout,
 		// WriteTimeout:   setting.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,

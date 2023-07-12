@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/cindyyangcaixia/gin-example/pkg/app"
-	"github.com/cindyyangcaixia/gin-example/pkg/e"
-	"github.com/cindyyangcaixia/gin-example/pkg/utils"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/app"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/e"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/utils"
 	"github.com/gin-gonic/gin"
 )
 

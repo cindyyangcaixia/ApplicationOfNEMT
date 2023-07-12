@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/cindyyangcaixia/gin-example/pkg/setting"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/setting"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )

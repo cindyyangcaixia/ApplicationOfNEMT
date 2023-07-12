@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/cindyyangcaixia/gin-example/pkg/app"
-	"github.com/cindyyangcaixia/gin-example/pkg/e"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/app"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/e"
 	"github.com/jinzhu/gorm"
 )
 

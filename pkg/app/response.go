@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/cindyyangcaixia/gin-example/pkg/e"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/e"
 	"github.com/gin-gonic/gin"
 )
 

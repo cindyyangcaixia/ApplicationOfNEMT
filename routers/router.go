@@ -1,9 +1,12 @@
 package routers
 
 import (
-	"github.com/cindyyangcaixia/gin-example/middlewares"
-	v1 "github.com/cindyyangcaixia/gin-example/routers/api/v1"
+	_ "github.com/cindyyangcaixia/ApplicationOfNEMT/docs"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/middlewares"
+	v1 "github.com/cindyyangcaixia/ApplicationOfNEMT/routers/api/v1"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func InitRouter() *gin.Engine {
@@ -11,6 +14,11 @@ func InitRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+
+	// docs.SwaggerInfo.Title = "Application of National College Entrance Examination"
+	// docs.SwaggerInfo.Description = "This application is for college candidates to fill in their volunteers as a reference"
+	// docs.SwaggerInfo.Version = "1.0"
+	// docs.SwaggerInfo.BasePath = "/api/v1"
 
 	apiv1 := r.Group("/api/v1")
 	apiv1.Use(middlewares.JWT())
@@ -22,6 +30,8 @@ func InitRouter() *gin.Engine {
 			})
 		})
 	}
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return r
 

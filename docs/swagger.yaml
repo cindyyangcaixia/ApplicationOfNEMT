@@ -1,0 +1,18 @@
+basePath: /api/v1
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8000
+info:
+  contact:
+    email: cindy.yang.caixia@gmail.com
+    name: API Support
+  description: This application is for college candidates to fill in their volunteers
+    as a reference.
+  title: Application of National College Entrance Examination
+  version: "1.0"
+paths: {}
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"

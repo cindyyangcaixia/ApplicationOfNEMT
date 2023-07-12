@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cindyyangcaixia/gin-example/pkg/setting"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/setting"
 	"github.com/golang-jwt/jwt/v5"
 )
 

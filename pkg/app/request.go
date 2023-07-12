@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/beego/beego/v2/core/validation"
-	"github.com/cindyyangcaixia/gin-example/pkg/e"
+	"github.com/cindyyangcaixia/ApplicationOfNEMT/pkg/e"
 	"github.com/gin-gonic/gin"
 )
 
