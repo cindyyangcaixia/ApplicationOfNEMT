@@ -51,6 +51,11 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
+	// token, err := utils.GenerateToken(1, "client")
+	// if err == nil {
+	// 	log.Println("%s", token)
+	// }
+
 	go func() {
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("Listen: %s\n", err)

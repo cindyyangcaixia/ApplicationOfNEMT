@@ -1,9 +1,9 @@
 package routers
 
 import (
+	v1 "github.com/cindyyangcaixia/ApplicationOfNEMT/controller/v1"
 	_ "github.com/cindyyangcaixia/ApplicationOfNEMT/docs"
 	"github.com/cindyyangcaixia/ApplicationOfNEMT/middlewares"
-	v1 "github.com/cindyyangcaixia/ApplicationOfNEMT/routers/api/v1"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -12,6 +12,7 @@ import (
 func InitRouter() *gin.Engine {
 
 	r := gin.New()
+	controller := v1.NewController()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
@@ -23,7 +24,7 @@ func InitRouter() *gin.Engine {
 	apiv1 := r.Group("/api/v1")
 	apiv1.Use(middlewares.JWT())
 	{
-		apiv1.POST("/schools", v1.CreateSchools)
+		apiv1.POST("/schools", controller.CreateSchool)
 		apiv1.GET("/health", func(c *gin.Context) {
 			c.JSON(200, gin.H{
 				"message": "ok",

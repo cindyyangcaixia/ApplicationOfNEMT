@@ -1,4 +1,53 @@
 basePath: /api/v1
+definitions:
+  models.Major:
+    properties:
+      created_by:
+        type: string
+      createdAt:
+        type: string
+      delete_by:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      school_id:
+        type: integer
+      serial_no:
+        type: string
+      updated_by:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  models.School:
+    properties:
+      created_by:
+        type: string
+      createdAt:
+        type: string
+      delete_by:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      majors:
+        items:
+          $ref: '#/definitions/models.Major'
+        type: array
+      name:
+        type: string
+      serialNo:
+        type: string
+      updated_by:
+        type: string
+      updatedAt:
+        type: string
+    type: object
 externalDocs:
   description: OpenAPI
   url: https://swagger.io/resources/open-api/
@@ -11,7 +60,35 @@ info:
     as a reference.
   title: Application of National College Entrance Examination
   version: "1.0"
-paths: {}
+paths:
+  /schools:
+    post:
+      consumes:
+      - application/json
+      description: create a school
+      parameters:
+      - description: School name
+        in: body
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: School serial number
+        in: body
+        name: serialNo
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.School'
+      summary: create a school
+      tags:
+      - schools
 securityDefinitions:
   BasicAuth:
     type: basic

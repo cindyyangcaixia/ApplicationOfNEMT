@@ -11,8 +11,9 @@ type CreateSchoolsForm struct {
 	SerialNo string `json:"serialNo" valid:"Required;MaxSize(100);MinSize(2)"`
 }
 
-// @Summary		Create a school
-// @Description	Create a school
+// CreateSchools godoc
+// @Summary		 create a school
+// @Description	 create a school
 // @Tags			schools
 // @Accept			json
 // @Produce		json
@@ -20,14 +21,13 @@ type CreateSchoolsForm struct {
 // @Param			serialNo	body	string	true	"School serial number"
 // @Success		200	{object}	models.School
 // @Router			/schools [post]
-
-func CreateSchools(c *gin.Context) {
+func (c *Controller) CreateSchool(ctx *gin.Context) {
 	var (
-		appG = app.Gin{C: c}
+		appG = app.Gin{C: ctx}
 		form CreateSchoolsForm
 	)
 
-	check := app.BindAndValid(c, &form)
+	check := app.BindAndValid(ctx, &form)
 
 	if check != nil {
 		appG.Response(check, nil)
@@ -42,4 +42,5 @@ func CreateSchools(c *gin.Context) {
 	}
 
 	appG.Response(nil, school)
+
 }
